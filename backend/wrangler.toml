@@ -1,0 +1,37 @@
+#:schema node_modules/wrangler/config-schema.json
+name = "tft-tournament-tracker-api"
+main = "src/index.ts"
+compatibility_date = "2024-01-01"
+compatibility_flags = ["nodejs_compat"]
+
+# Environment-specific configurations
+[env.development]
+vars = { ENVIRONMENT = "development" }
+
+[env.production]
+vars = { ENVIRONMENT = "production" }
+
+# D1 Database binding
+[[d1_databases]]
+binding = "DB"
+database_name = "tft-tournament-tracker"
+database_id = "your-database-id-here"  # Will be generated when you create the database
+
+# KV namespace binding
+[[kv_namespaces]]
+binding = "CACHE"
+id = "your-kv-namespace-id"  # Will be generated
+
+# R2 bucket binding
+[[r2_buckets]]
+binding = "STORAGE"
+bucket_name = "tft-tournament-data"
+
+# Durable Objects for real-time features (Pro tier)
+[[durable_objects.bindings]]
+name = "TOURNAMENT_ROOM"
+class_name = "TournamentRoom"
+
+# Cron triggers for automated data collection
+[[triggers.crons]]
+cron = "*/30 * * * *"  # Every 30 seconds during tournament hours
