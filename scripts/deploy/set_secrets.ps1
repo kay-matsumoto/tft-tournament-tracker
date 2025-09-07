@@ -5,7 +5,7 @@ Write-Host "Setting up Cloudflare Worker secrets..." -ForegroundColor Green
 Write-Host ""
 
 Write-Host "Setting ADMIN_TOKEN (enter a strong 32+ character random string):" -ForegroundColor Yellow
-& wrangler secret put ADMIN_TOKEN
+& wrangler secret put ADMIN_TOKEN --config config\wrangler.toml
 
 Write-Host ""
 Write-Host "Optional: Set up additional integrations" -ForegroundColor Blue

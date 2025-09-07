@@ -1,0 +1,64 @@
+# wrangler.toml - Fixed Configuration for Wrangler 4.34.0
+name = "tft-tournament-tracker"
+main = "src/workers/main_worker.js"
+compatibility_date = "2024-01-01"
+
+# KV Namespaces
+[[kv_namespaces]]
+binding = "API_KEYS"
+id = "6040590c06ef4755ac8cfc6aa4966ea9"
+preview_id = "8b300da2033c47f59220e365c772ce39"
+
+[[kv_namespaces]]
+binding = "TOURNAMENT_DATA"  
+id = "ffe57701386b48799730c1ab49d1540f"
+preview_id = "2ab5e81ad9f54905ad418a39545a4e7f"
+
+# Environment variables
+[vars]
+ENVIRONMENT = "production"
+
+# Development environment
+[env.development]
+name = "tft-tournament-tracker-dev"
+vars = { ENVIRONMENT = "development", DEBUG_MODE = "true" }
+
+[[env.development.kv_namespaces]]
+binding = "API_KEYS"
+id = "6040590c06ef4755ac8cfc6aa4966ea9"
+preview_id = "8b300da2033c47f59220e365c772ce39"
+
+[[env.development.kv_namespaces]]
+binding = "TOURNAMENT_DATA"
+id = "ffe57701386b48799730c1ab49d1540f"
+preview_id = "2ab5e81ad9f54905ad418a39545a4e7f"
+
+# Staging environment
+[env.staging]
+name = "tft-tournament-tracker-staging"
+vars = { ENVIRONMENT = "staging", DEBUG_MODE = "false" }
+
+[[env.staging.kv_namespaces]]
+binding = "API_KEYS"
+id = "6040590c06ef4755ac8cfc6aa4966ea9"
+preview_id = "8b300da2033c47f59220e365c772ce39"
+
+[[env.staging.kv_namespaces]]
+binding = "TOURNAMENT_DATA"
+id = "ffe57701386b48799730c1ab49d1540f"
+preview_id = "2ab5e81ad9f54905ad418a39545a4e7f"
+
+# Production environment
+[env.production]
+name = "tft-tournament-tracker-prod"
+vars = { ENVIRONMENT = "production", DEBUG_MODE = "false" }
+
+[[env.production.kv_namespaces]]
+binding = "API_KEYS"
+id = "6040590c06ef4755ac8cfc6aa4966ea9"
+preview_id = "8b300da2033c47f59220e365c772ce39"
+
+[[env.production.kv_namespaces]]
+binding = "TOURNAMENT_DATA"
+id = "ffe57701386b48799730c1ab49d1540f"
+preview_id = "2ab5e81ad9f54905ad418a39545a4e7f"
