@@ -1,21 +1,32 @@
 {
   "name": "tft-tournament-tracker",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "TFT Tournament Tracker with real-time leaderboards",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "concurrently \"npm run dev:frontend\" \"npm run dev:backend\"",
+    "dev:frontend": "cd frontend && npm run dev",
+    "dev:backend": "cd backend && npm run dev",
+    "build": "npm run build:frontend && npm run build:backend",
+    "build:frontend": "cd frontend && npm run build",
+    "build:backend": "cd backend && npm run build",
+    "deploy": "npm run build && npm run deploy:all",
+    "deploy:frontend": "cd frontend && wrangler pages deploy dist",
+    "deploy:backend": "cd backend && wrangler deploy",
+    "deploy:all": "npm run deploy:backend && npm run deploy:frontend",
+    "setup": "node scripts/setup.js",
+    "db:create": "wrangler d1 create tft-tournament-tracker",
+    "db:migrate": "wrangler d1 execute tft-tournament-tracker --file=database/schema.sql"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/kay-matsumoto/tft-tournament-tracker.git"
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "typescript": "^5.3.3"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
-  "bugs": {
-    "url": "https://github.com/kay-matsumoto/tft-tournament-tracker/issues"
-  },
-  "homepage": "https://github.com/kay-matsumoto/tft-tournament-tracker#readme"
+  "keywords": ["tft", "tournament", "tracker", "cloudflare", "esports"],
+  "author": "Kay Matsumoto",
+  "license": "MIT"
 }
