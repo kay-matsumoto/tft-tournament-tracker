@@ -1,3 +1,0 @@
-@echo off
-echo Deploying TFT Tournament Tracker...
-wrangler deploy --env production
