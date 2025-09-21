@@ -1,6 +1,0 @@
-#:schema node_modules/wrangler/config-schema.json
-name = "tft-tournament-tracker"
-compatibility_date = "2024-01-01"
-compatibility_flags = ["nodejs_compat"]
-
-# This will be used for the main worker in the backend directory
