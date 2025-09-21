@@ -1,0 +1,53 @@
+﻿#:schema node_modules/wrangler/config-schema.json
+name = "tft-tournament-tracker"
+main = "src/index.js"
+compatibility_date = "2024-09-21"
+compatibility_flags = ["nodejs_compat"]
+
+# Development environment
+[env.development]
+name = "tft-tournament-tracker-dev"
+vars = { ENVIRONMENT = "development", API_VERSION = "v1" }
+
+# Production environment  
+[env.production]
+name = "tft-tournament-tracker"
+vars = { ENVIRONMENT = "production", API_VERSION = "v1" }
+
+# KV namespace bindings
+[[env.development.kv_namespaces]]
+binding = "SESSIONS"
+id = "b09147cc1b7641b18683d0545bc834a4"
+
+[[env.development.kv_namespaces]]
+binding = "CACHE"
+id = "7e98229fc4ef420c8397b8d967e5f111"
+
+[[env.production.kv_namespaces]]
+binding = "SESSIONS"
+id = "b09147cc1b7641b18683d0545bc834a4"
+
+[[env.production.kv_namespaces]]
+binding = "CACHE"
+id = "7e98229fc4ef420c8397b8d967e5f111"
+
+# D1 Database bindings
+[[env.development.d1_databases]]
+binding = "DB"
+database_name = "tft-tournament-tracker-db"
+database_id = "b5f8d00a-4036-4226-be17-b964d593ed5c"
+
+[[env.development.d1_databases]]
+binding = "AUDIT_DB"
+database_name = "tft-tournament-tracker_audit"
+database_id = "e8163825-c657-4599-af9f-6fa0a5f6c295"
+
+[[env.production.d1_databases]]
+binding = "DB"
+database_name = "tft-tournament-tracker-db"
+database_id = "b5f8d00a-4036-4226-be17-b964d593ed5c"
+
+[[env.production.d1_databases]]
+binding = "AUDIT_DB"
+database_name = "tft-tournament-tracker_audit"
+database_id = "e8163825-c657-4599-af9f-6fa0a5f6c295"

@@ -1,0 +1,3 @@
+@echo off
+echo Starting TFT Tournament Tracker (Development)...
+wrangler dev --env development
